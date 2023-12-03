@@ -4,14 +4,13 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Calculator {
-
     public static int add(String string) {
         if (!string.isEmpty()) {
-            List<Integer> numbers = Arrays.stream(string.split(",|\n"))
+            List<Integer> numbers = Arrays.stream(string.split(",|\n|;"))
                     .map(Integer::parseInt).filter(n -> n < 1000).toList();
 
             if (numbers.stream().anyMatch(n -> n < 0)) {
-                throw new IllegalArgumentException("Negatives not allowed: " + numbers);
+                throw new IllegalArgumentException("Negative numbers are not allowed: " + numbers);
             }
 
             return numbers.stream()

@@ -49,10 +49,15 @@ public class CalculatorTest {
         Assertions.assertEquals(21, result);
     }
 
+    @Test
+    void shouldIgnoreSemiColonsAndReturnSumOfNumbers() {
+        int result = Calculator.add("7,7\n7,0,1001;4");
+        Assertions.assertEquals(25, result);
+    }
+
 
     @Test
     void shouldThrowExceptionForNegativeNumbers() {
-        // Act and Assert
         Assertions.assertThrows(IllegalArgumentException.class, () -> Calculator.add("7,7\n-7,0"));
     }
 }
